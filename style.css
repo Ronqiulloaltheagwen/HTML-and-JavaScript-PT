@@ -1,0 +1,12 @@
+body {
+  background-color: lightpink;
+  color: purple;
+  font-family: "Times New Roman", serif;
+  font-size: 13px;
+  text-align: center;
+}
+
+button {
+  padding: 8px 16px;
+  font-size: 13px;
+}
