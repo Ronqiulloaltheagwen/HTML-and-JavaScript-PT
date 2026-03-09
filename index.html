@@ -1,26 +1,49 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-<title>Countdown Timer</title>
-<link rel="stylesheet" href="style.css">
+  <title>Countdown</title>
+  <style>
+    body {
+      background: lightpink;
+      color: purple;
+      font-family: "Times New Roman";
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+    input { font-size: 25px; padding: 8px; margin: 5px; width: 100px; text-align: center; }
+    button { font-size: 30px; padding: 10px 25px; margin-top: 15px; background: purple; color: white; border: none; border-radius: 8px; cursor: pointer; }
+    h1 { font-size: 45px; margin-bottom: 15px; }
+    h2 { font-size: 70px; margin-top: 20px; }
+  </style>
 </head>
-
 <body>
 
-<h1>COUNTDOWN TIMER</h1>
+<h1>Countdown</h1>
 
-<input id="hours" type="number" placeholder="Hours">
-<input id="minutes" type="number" placeholder="Minutes">
-<input id="seconds" type="number" placeholder="Seconds">
+<input id="h" type="number" placeholder="H">
+<input id="m" type="number" placeholder="M">
+<input id="s" type="number" placeholder="S">
+<br>
+<button onclick="start()">Start</button>
 
-<br><br>
+<h2 id="d">00:00:00</h2>
 
-<button onclick="startTimer()">START</button>
-
-<h2 id="display">00:00:00</h2>
-
-<script src="script.js"></script>
+<script>
+function start() {
+  let t = (+h.value||0)*3600 + (+m.value||0)*60 + (+s.value||0);
+  let c = setInterval(()=>{
+    if(t<=0){ clearInterval(c); new Audio("https://www.soundjay.com/buttons/beep-07.mp3").play(); alert("Time's up!"); return; }
+    t--;
+    let H=Math.floor(t/3600), M=Math.floor((t%3600)/60), S=t%60;
+    d.innerText=`${String(H).padStart(2,'0')}:${String(M).padStart(2,'0')}:${String(S).padStart(2,'0')}`;
+  },1000);
+}
+</script>
 
 </body>
 </html>
