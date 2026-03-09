@@ -1,16 +1,27 @@
 let timer;
 
-function start() {
-  let [h,m,s] = document.getElementById("t").value.split(":").map(Number);
-  let total = h*3600 + m*60 + s;
+function start(){
+let time = document.getElementById("t").value;
+let parts = time.split(":");
 
-  clearInterval(timer);
-  timer = setInterval(() => {
-    if (total <= 0) return clearInterval(timer);
-    total--;
-    let H = String(Math.floor(total/3600)).padStart(2,'0');
-    let M = String(Math.floor(total%3600/60)).padStart(2,'0');
-    let S = String(total%60).padStart(2,'0');
-    document.getElementById("d").innerText = ${H}:${M}:${S};
-  }, 1000);
+let total = parts[0]*3600 + parts[1]*60 + Number(parts[2]);
+
+clearInterval(timer);
+
+timer = setInterval(function(){
+
+if(total <= 0){
+clearInterval(timer);
+return;
+}
+
+total--;
+
+let h = String(Math.floor(total/3600)).padStart(2,'0');
+let m = String(Math.floor(total%3600/60)).padStart(2,'0');
+let s = String(total%60).padStart(2,'0');
+
+document.getElementById("d").innerText = h + ":" + m + ":" + s;
+
+},1000);
 }
