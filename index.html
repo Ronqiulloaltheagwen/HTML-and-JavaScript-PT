@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Countdown Timer</title>
-  <link rel="stylesheet" href="style.css">
+<title>Countdown Timer</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="container">
+<h1>Countdown Timer</h1>
 
-<h2>Countdown Timer</h2>
+<input id="hours" type="number" placeholder="Hours">
+<input id="minutes" type="number" placeholder="Minutes">
+<input id="seconds" type="number" placeholder="Seconds">
 
-<input id="t" type="time" step="1">
+<br><br>
 
-<button onclick="start()">Start</button>
+<button onclick="startTimer()">START</button>
 
-<h1 id="d">00:00:00</h1>
-
-</div>
+<h2 id="display">00:00:00</h2>
 
 <script src="script.js"></script>
 
 </body>
+
 </html>
