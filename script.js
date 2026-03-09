@@ -1,27 +1,34 @@
-let timer;
+function startTimer(){
 
-function start(){
-let time = document.getElementById("t").value;
-let parts = time.split(":");
+let h = Number(document.getElementById("hours").value) || 0;
+let m = Number(document.getElementById("minutes").value) || 0;
+let s = Number(document.getElementById("seconds").value) || 0;
 
-let total = parts[0]*3600 + parts[1]*60 + Number(parts[2]);
+let total = h*3600 + m*60 + s;
 
-clearInterval(timer);
-
-timer = setInterval(function(){
+let timer = setInterval(function(){
 
 if(total <= 0){
 clearInterval(timer);
+
+let sound = new Audio("https://www.soundjay.com/buttons/beep-07.mp3");
+sound.play();
+
+alert("Time's up!");
 return;
 }
 
 total--;
 
-let h = String(Math.floor(total/3600)).padStart(2,'0');
-let m = String(Math.floor(total%3600/60)).padStart(2,'0');
-let s = String(total%60).padStart(2,'0');
+let hh = Math.floor(total/3600);
+let mm = Math.floor((total%3600)/60);
+let ss = total%60;
 
-document.getElementById("d").innerText = h + ":" + m + ":" + s;
+document.getElementById("display").innerText =
+String(hh).padStart(2,'0') + ":" +
+String(mm).padStart(2,'0') + ":" +
+String(ss).padStart(2,'0');
 
 },1000);
+
 }
